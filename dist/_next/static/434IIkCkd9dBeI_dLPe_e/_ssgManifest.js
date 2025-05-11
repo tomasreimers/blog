@@ -1,0 +1,1 @@
+self.__SSG_MANIFEST=new Set(["\u002Fposts\u002F[[...mdxPath]]","\u002Fsocial-images\u002F[[...mdxPath]]","\u002Ftags\u002F[tag]"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()
