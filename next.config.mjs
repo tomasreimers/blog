@@ -12,12 +12,16 @@ const withNextra = nextra({
   },
   mdxOptions: {
     remarkPlugins: [wordCountPlugin]
-  }
+  },
+  defaultShowCopyCode: true,
+  readingTime: true
 })
 
 export default withNextra({
   output: "export",
   distDir: 'dist',
+  reactStrictMode: true,
+  cleanDistDir: true,
   images: {
     unoptimized: true
   },

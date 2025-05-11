@@ -1,11 +1,13 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
 @source "./pages/**/*.{js,ts,md,jsx,tsx,mdx}";
 @source "./components/**/*.{js,ts,md,jsx,tsx,mdx}";
 @source not ".next";
 @source not "dist";
 @custom-variant dark (&:where(.dark, .dark *));
 
-@import 'nextra-theme-docs/style.css';
+@import 'nextra-theme-blog/style.css';
 
 .nextra-content {
   ul {

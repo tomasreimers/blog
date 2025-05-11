@@ -2,64 +2,56 @@ import '../styles.scss';
 
 import { Inter } from 'next/font/google';
 import Script from 'next/script';
+import { ThemeProvider } from 'next-themes';
+import { ViewTransitions } from 'next-view-transitions';
 import { Head } from 'nextra/components';
-import { getPageMap } from 'nextra/page-map';
-import { Layout, Navbar } from 'nextra-theme-docs';
+
+import { ThemeSwitch } from '../components/theme-switch';
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({ subsets: ['latin'], display: 'swap' });
 
 export const metadata = {
-  metadataBase: new URL('https://frontenddocs.com'),
-  title: {
-    template: '%s - Frontend Docs',
-  },
-  description:
-    'A ~20-page, front-to-back-readable guide on writing frontend for experienced developers.',
-  applicationName: 'Frontend Docs',
-  generator: 'Next.js',
-  appleWebApp: {
-    title: 'Frontend Docs',
-  },
+  metadataBase: new URL('https://blog.tomasreimers.com'),
+  applicationName: 'Tomas Reimers Blog',
   twitter: {
-    site: 'https://frontenddocs.com',
+    site: 'https://blog.tomasreimers.com',
   },
 };
 
 export default async function RootLayout({ children }) {
-  const navbar = (
-    <Navbar logo={<span className="font-black">FRONTEND DOCS</span>} />
-  );
-  const pageMap = await getPageMap();
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
-      <Head faviconGlyph="📚" />
+      <Head faviconGlyph="📚">
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="RSS Feed for blog.tomasreimers.com"
+          href="/rss.xml"
+        />
+      </Head>
       <body className={inter.className}>
-        <Layout
-          navbar={navbar}
-          feedback={{ content: 'Questions? Leave me feedback' }}
-          editLink={'Opinions? Suggest an edit'}
-          footer={null}
-          docsRepositoryBase="https://github.com/tomasreimers/frontend-docs/tree/main"
-          sidebar={{ defaultMenuCollapseLevel: 1 }}
-          pageMap={pageMap}
-          nextThemes={{ defaultTheme: 'dark' }}
-          toc={{
-            extraContent: (
-              <div className="my-4 text-xs text-gray-500 dark:text-gray-400 contrast-more:text-gray-800 contrast-more:dark:text-gray-50">
-                <p>
-                  This site is a ~20-page, front-to-back-readable guide for
-                  backend developers learning frontend development.
-                </p>
-              </div>
-            ),
-          }}
-        >
-          {children}
-        </Layout>
+        <ThemeProvider attribute="class">
+          <article
+            className="container px-4 prose max-md:prose-sm dark:prose-invert"
+            dir="ltr"
+            data-pagefind-body
+          >
+            <ViewTransitions>
+              {children}
+              <small
+                className="mt-32 block flex justify-between items-center"
+                data-pagefind-ignore="all"
+              >
+                <span>Tomas Reimers © {new Date().getFullYear()}</span>
+                <ThemeSwitch />
+              </small>
+            </ViewTransitions>
+          </article>
+        </ThemeProvider>
         <Script
           strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-LJBHQ5RS43"
+          src="https://www.googletagmanager.com/gtag/js?id=G-JP5JYDLRTH"
         />
         <Script
           strategy="afterInteractive"
@@ -69,7 +61,7 @@ export default async function RootLayout({ children }) {
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
       
-        gtag('config', 'G-LJBHQ5RS43');        
+        gtag('config', 'G-JP5JYDLRTH');        
       `,
           }}
         />
