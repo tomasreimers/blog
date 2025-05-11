@@ -22,12 +22,17 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
-      <Head faviconGlyph="📚">
+      <Head faviconGlyph="✏️">
         <link
           rel="alternate"
           type="application/rss+xml"
           title="RSS Feed for blog.tomasreimers.com"
           href="/rss.xml"
+        />
+        {/* The default Nextra 4 favicon does not work with Chrome (it uses .svg in the embedded css rather than .text) */}
+        <link
+          rel="icon"
+          href={`data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='50' y='.9em' font-size='90' text-anchor='middle'>✏️</text><style>text{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";fill:black}@media(prefers-color-scheme:dark){text{fill:white}}</style></svg>`}
         />
       </Head>
       <body className={inter.className}>
