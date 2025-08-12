@@ -35,3 +35,9 @@
     }
   }
 }
+
+article {
+  @apply pt-20 pb-4;
+  @apply flex flex-col;
+  min-height: 100vh;
+}

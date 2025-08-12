@@ -38,12 +38,13 @@ export default async function RootLayout({ children }) {
       <body className={inter.className}>
         <ThemeProvider attribute="class">
           <article
-            className="container px-4 prose max-md:prose-sm dark:prose-invert"
+            className="container px-4 prose max-md:prose-sm dark:prose-invert flex flex-col"
             dir="ltr"
             data-pagefind-body
           >
             <ViewTransitions>
               {children}
+              <div className="flex grow"></div>
               <small
                 className="mt-32 block flex justify-between items-center"
                 data-pagefind-ignore="all"
