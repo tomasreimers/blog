@@ -6,6 +6,12 @@
     <description>Latest blog posts</description>
     <language>en-us</language>
     <item>
+        <title>Revenue is only part of the equation</title>
+        <description>A lot of AI apps today are being priced like D2C in 2016.</description>
+        <link>https://blog.tomasreimers.com/posts/revenue-is-only-part-of-the-equation</link>
+        <pubDate>Tue, 12 Aug 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
         <title>The fifty-one percent coin</title>
         <description>LLMs probably are not how the brain works, but so long as they're a 51% coin, it doesn't really matter.</description>
         <link>https://blog.tomasreimers.com/posts/the-fifty-one-percent-coin</link>
