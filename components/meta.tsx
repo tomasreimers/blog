@@ -1,17 +1,17 @@
+import { DateTime } from 'luxon';
 import { default as Image } from 'next/image';
 import type { FC } from 'react';
 
 import Tomas from '../public/images/people/tomas.jpg';
-import { isValidDate } from './is-valid-date';
 
 export const Meta: FC<{ date: string }> = ({ date }) => {
-  if (date && !isValidDate(date)) {
+  const dateObj = date && DateTime.fromFormat(date, 'yyyy-MM-dd');
+
+  if (dateObj && !dateObj.isValid) {
     throw new Error(
-      `Invalid date "${date}". Provide date in "YYYY/M/D", "YYYY/M/D H:m", "YYYY-MM-DD", "[YYYY-MM-DD]T[HH:mm]" or "[YYYY-MM-DD]T[HH:mm:ss.SSS]Z" format.`
+      `Invalid date "${date}": ${dateObj.invalidReason}.`
     );
   }
-
-  const dateObj = date && new Date(date);
 
   return (
     <div className="not-prose mt-2 flex items-center border-b pb-2 border-gray-200 dark:border-gray-700">
@@ -31,12 +31,12 @@ export const Meta: FC<{ date: string }> = ({ date }) => {
       </a>
       <div className="flex grow" />
       {dateObj && (
-        <time dateTime={dateObj.toISOString()} className="text-sm">
+        <time dateTime={dateObj.toJSDate().toISOString()} className="text-sm">
           {new Intl.DateTimeFormat('en-US', {
             month: 'short',
             day: 'numeric',
             year: 'numeric',
-          }).format(dateObj)}
+          }).format(dateObj.toJSDate())}
         </time>
       )}
     </div>
